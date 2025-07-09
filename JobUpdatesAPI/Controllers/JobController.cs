@@ -1,5 +1,4 @@
 using JobUpdatesAPI.Data;
-using JobUpdatesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobUpdatesAPI.Controllers;
