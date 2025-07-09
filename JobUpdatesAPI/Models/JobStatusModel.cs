@@ -1,7 +1,10 @@
-﻿namespace JobUpdatesAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JobUpdatesAPI.Models;
 
 public class JobStatusModel
 {
+    [Key]
     public short JobStatusId { get; set; }
     public string StatusName { get; set; } = string.Empty;
 

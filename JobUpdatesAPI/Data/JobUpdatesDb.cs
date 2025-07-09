@@ -42,7 +42,7 @@ public class JobUpdatesDbContext : DbContext
             new JobStatusModel { JobStatusId = 6, StatusName = "Scheduled Phone Call" },
             new JobStatusModel { JobStatusId = 7, StatusName = "Screening/ Pre-Interview" },
             new JobStatusModel { JobStatusId = 8, StatusName = "Interview" },
-            new JobStatusModel { JobStatusId = 8, StatusName = "Offer" }
+            new JobStatusModel { JobStatusId = 9, StatusName = "Offer" }
         );
 
         return modelBuilder;

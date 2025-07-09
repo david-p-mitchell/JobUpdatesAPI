@@ -1,7 +1,10 @@
-﻿namespace JobUpdatesAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace JobUpdatesAPI.Models;
 
 public class JobInterviewStageModel
 {
+    [Key]
     public short JobInterviewStageId { get; set; }
     public int CurrentStage {  get; set; } = 0; 
     public int InterviewStages { get; set; }

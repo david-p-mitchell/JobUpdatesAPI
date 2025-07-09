@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace JobUpdatesAPI.Models;
 
 public class JobModel
 {
+    [Key]
     public int JobId { get; set; }
     public string Name { get; set; } = string.Empty;
 
