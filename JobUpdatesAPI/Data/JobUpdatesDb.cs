@@ -26,15 +26,26 @@ public class JobUpdatesDbContext : DbContext
         modelBuilder.Entity<JobUpdateModel>()
             .HasOne(u => u.Status)
             .WithMany(s => s.JobUpdates)
-            .HasForeignKey(u => u.JobStatusModelId);
+            .HasForeignKey(u => u.JobStatusId);
 
+        modelBuilder = SetJobStatuses(modelBuilder);
+    }
+
+    private static ModelBuilder SetJobStatuses(ModelBuilder modelBuilder)
+    {
         modelBuilder.Entity<JobStatusModel>().HasData(
-            new JobStatusModel { JobStatusId = 1, StatusName = "Pending" },
-            new JobStatusModel { JobStatusId = 2, StatusName = "InProgress" },
-            new JobStatusModel { JobStatusId = 3, StatusName = "Completed" }
+            new JobStatusModel { JobStatusId = 1, StatusName = "N/A" },
+            new JobStatusModel { JobStatusId = 2, StatusName = "Applied" },
+            new JobStatusModel { JobStatusId = 3, StatusName = "Rejection" },
+            new JobStatusModel { JobStatusId = 4, StatusName = "Holding CV" },
+            new JobStatusModel { JobStatusId = 5, StatusName = "Awaiting Response" },
+            new JobStatusModel { JobStatusId = 6, StatusName = "Scheduled Phone Call" },
+            new JobStatusModel { JobStatusId = 7, StatusName = "Screening/ Pre-Interview" },
+            new JobStatusModel { JobStatusId = 8, StatusName = "Interview" },
+            new JobStatusModel { JobStatusId = 8, StatusName = "Offer" }
         );
 
-
+        return modelBuilder;
     }
 
     private static ModelBuilder SetJobKeywords(ModelBuilder modelBuilder)
