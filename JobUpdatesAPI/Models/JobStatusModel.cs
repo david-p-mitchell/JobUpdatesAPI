@@ -2,7 +2,7 @@
 
 public class JobStatusModel
 {
-    public int JobStatusId { get; set; }
+    public short JobStatusId { get; set; }
     public string StatusName { get; set; } = string.Empty;
 
     // Navigation property to the JobUpdates
