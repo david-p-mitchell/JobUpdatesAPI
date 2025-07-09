@@ -4,7 +4,7 @@ public class JobUpdateModel
 {
     public int JobUpdateId { get; set; }
     public int JobId { get; set; }
-    public int JobStatusModelId { get; set; }
+    public short JobStatusId { get; set; }
     public JobStatusModel? Status { get; set; }
     public DateTime? UpdateDate { get; set; }
     public string Description { get; set; } = string.Empty;
