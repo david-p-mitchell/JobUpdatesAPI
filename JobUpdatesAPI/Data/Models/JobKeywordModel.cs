@@ -1,4 +1,4 @@
-﻿namespace JobUpdatesAPI.Models;
+﻿namespace JobUpdatesAPI.Data.Models;
 
 public class JobKeywordModel
 {

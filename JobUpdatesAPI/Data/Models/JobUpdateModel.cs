@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JobUpdatesAPI.Models;
+namespace JobUpdatesAPI.Data.Models;
 
 public class JobUpdateModel
 {
@@ -14,5 +14,5 @@ public class JobUpdateModel
     public string Notes { get; set; } = string.Empty;
 
     // Navigation property to the Job
-    public JobModel? Job { get; set;  }
+    public JobModel? Job { get; set; }
 }
