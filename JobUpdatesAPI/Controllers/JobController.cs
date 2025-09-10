@@ -13,7 +13,6 @@ public class JobController(IJobService jobService) : ControllerBase
     [HttpGet(Name = "GetAllJobs")]
     public async Task<IActionResult> GetAll()
     {
-
         var jobs = await _jobService.GetAllJobsAsync();
         return Ok(jobs);
     }
