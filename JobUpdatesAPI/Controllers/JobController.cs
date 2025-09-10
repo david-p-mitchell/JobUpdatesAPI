@@ -1,21 +1,39 @@
-using JobUpdatesAPI.Data;
+using JobUpdatesAPI.Interfaces;
+using JobUpdatesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobUpdatesAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class JobController : ControllerBase
+[Route("api/[controller]")]
+public class JobController(IJobService jobService) : ControllerBase
 {
-    private readonly ILogger<JobController> _logger;
-    private JobUpdatesDbContext _jobUpdatesDbContext;
+    private readonly IJobService _jobService = jobService;
 
-    public JobController(ILogger<JobController> logger, JobUpdatesDbContext jobUpdatesDbContext)
+    [HttpGet(Name = "GetAllJobs")]
+    public async Task<IActionResult> GetAll()
     {
-        _logger = logger;
-        _jobUpdatesDbContext = jobUpdatesDbContext;
+
+        var jobs = await _jobService.GetAllJobsAsync();
+        return Ok(jobs);
     }
 
     [HttpGet(Name = "GetJobs")]
-    public IActionResult Get() => Ok(_jobUpdatesDbContext.Jobs.ToList());
+    public async Task<IActionResult> Get([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+    {
+
+        var jobs = await _jobService.GetJobsAsync(pageNumber, pageSize);
+        return Ok(jobs);
+    }
+
+    [HttpPost(Name = "AddJob")]
+    public async Task<IActionResult> AddJob(AddNewJobModel job)
+    {
+        if (job == null)
+            return BadRequest("Job cannot be null.");
+
+        var newJob = await _jobService.AddJobAsync(job);
+
+        return CreatedAtRoute("GetJobs", new { id = newJob.JobId }, newJob);
+    }
 }
