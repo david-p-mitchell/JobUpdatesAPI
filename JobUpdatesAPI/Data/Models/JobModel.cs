@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace JobUpdatesAPI.Models;
+namespace JobUpdatesAPI.Data.Models;
 
 public class JobModel
 {

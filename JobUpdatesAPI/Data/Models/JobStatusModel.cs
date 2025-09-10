@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JobUpdatesAPI.Models;
+namespace JobUpdatesAPI.Data.Models;
 
 public class JobStatusModel
 {
@@ -10,7 +10,7 @@ public class JobStatusModel
 
     // Navigation property to the JobUpdates
     public ICollection<JobUpdateModel> JobUpdates { get; set; } = [];
-    
+
     public JobUpdateModel? JobUpdate { get; set; } = null!; // back to parent
     // Override ToString for better debugging
     public override string ToString()
