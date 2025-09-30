@@ -1,9 +1,10 @@
 using JobUpdatesAPI.Data;
+using JobUpdatesAPI.Interfaces;
+using JobUpdatesAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddDbContext<JobUpdatesDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
@@ -28,5 +29,7 @@ app.MapControllers();
 using var scope = app.Services.CreateScope();
 var db = scope.ServiceProvider.GetRequiredService<JobUpdatesDbContext>();
 db.Database.Migrate();
+
+db.SaveChanges();
 
 app.Run();

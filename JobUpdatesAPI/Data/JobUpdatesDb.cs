@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using JobUpdatesAPI.Models;
+using JobUpdatesAPI.Data.Models;
 
 namespace JobUpdatesAPI.Data;
 
