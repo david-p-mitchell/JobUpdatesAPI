@@ -29,6 +29,10 @@ public class JobUpdatesDbContext : DbContext
             .HasForeignKey(u => u.JobStatusId);
 
         modelBuilder = SetJobStatuses(modelBuilder);
+
+        modelBuilder.Entity<JobUpdateModel>()
+        .Navigation(j => j.Status)
+        .AutoInclude(); // always includes Status automatically 
     }
 
     private static ModelBuilder SetJobStatuses(ModelBuilder modelBuilder)
