@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace JobUpdatesAPI.Models;
 
@@ -14,5 +15,6 @@ public class JobUpdateModel
     public string Notes { get; set; } = string.Empty;
 
     // Navigation property to the Job
+    [JsonIgnore]  // 🚀 prevents loop
     public JobModel? Job { get; set;  }
 }
